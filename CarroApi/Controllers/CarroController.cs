@@ -1,4 +1,5 @@
-﻿using CarroApi.Models;
+﻿using CarroApi.Dto.Carro;
+using CarroApi.Models;
 using CarroApi.Services.carro;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,12 @@ namespace CarroApi.Controllers
         {
             var carro = await _carroInterface.ObterCarroPorId(Id);
             return Ok(carro);
+        }
+        [HttpPost("criarCarro")]
+        public async Task<ActionResult<ResponseModel<CarroModel>>> criarCarro(CarroCriacaoDto carroCriacaoDto)
+        {
+            var carros = await _carroInterface.CriarCarro(carroCriacaoDto);
+            return Ok(carros);
         }
     }
 }
