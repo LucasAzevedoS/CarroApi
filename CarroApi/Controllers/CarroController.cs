@@ -35,5 +35,20 @@ namespace CarroApi.Controllers
             var carros = await _carroInterface.CriarCarro(carroCriacaoDto);
             return Ok(carros);
         }
+
+        [HttpPut("editarCarro")]
+        public async Task<ActionResult<ResponseModel<List<CarroModel>>>> editarCarro(CarroEdicaoDto carroEdicaoDto)
+        {
+            var carros = await _carroInterface.EditarCarro(carroEdicaoDto);
+            return Ok(carros);
+        }
+
+        [HttpDelete("excluirCarro")]
+        public async Task<ActionResult<ResponseModel<List<CarroModel>>>> excluirCarro(int Id)
+        {
+            var carros = await _carroInterface.ExcluirCarro(Id);
+            return Ok(carros);
+        }
+
     }
 }
